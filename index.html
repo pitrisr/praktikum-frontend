@@ -9,91 +9,85 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body>
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900" id="navbar">
+<body class="bg-white border-b dark:bg-gray-900 dark:border-gray-800">
+    <nav class="border-gray-200 px-2 sm:px-6 py-4 rounded dark:bg-gray-600" id="navbar">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
           <a href="" class="flex items-left">
               <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Pitri Sri Rahayu</span>
           </a>
           </div>
         </div>
-      </nav>
+    </nav>
 
-      <div id="app" class="ml-20 mr-20">
-        <h1 class="text-black text-xl font-semibold p-2 flex justify-center items-center">Form Tambah Data Buku</h1>
-        <form @submit.prevent="self_improvement.isUpdate ? updateSelfImprovement(): submitSelfImprovement()">
-            <label>Judul</label>
+    <div id="app" class="ml-20 mr-20">
+        <h1 class="text-white text-3xl font-semibold p-2 flex justify-center items-center">Form Tambah Data Buku</h1>
+        <form @submit.prevent="self_improvement.isUpdate ? updateSelf_improvement(): submitSelf_improvement()">
+            <label class="text-white">Judul</label>
             <input 
             v-model="self_improvement.title"
             type="text"
             id="input_title" class="mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Judul Buku" />
             
-            <label>Penulis</label>
+            <label class="text-white">Penulis</label>
             <input 
             v-model="self_improvement.author"
             type="text"
             id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Nama Penulis Buku" />
             
-            <label>Penerbit</label>
+            <label class="text-white">Penerbit</label>
             <input 
             v-model="self_improvement.publisher"
             type="text"
             id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Perusahaan Penerbit Buku" />
             
-            <label>Tahun Terbit</label>
+            <label class="text-white">Tahun Terbit</label>
             <input 
             v-model="self_improvement.publication_year"
             type="text"
             id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Tahun Terbit Buku" />
-
+    
             <button
-            type="submit"  
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-750 focus:outline-none dark:focus:ring-blue-800"
-            @click="submitSelf_improvement()">
-            {{ self_improvement.isUpdate? 'Update' : 'Create'}}
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            type="submit"
+            >
+            {{ self_improvement.isUpdate ? 'Submit' : 'Create' }}
             </button>
-        </form @submit.prevent="self_improvement.isUpdate? updateSelfImprovement() : submitSelf_improvement()">
-        <div id="data">
-            <ul v-for="(self_improvement, index) in self_improvement.list" :key="index">
-                <li>
-                    <span @click="getSelf_improvementById(self_improvement.id)">
-                        {{self_improvement.title}} {{self_improvement.author}} {{self_improvement.publisher}} {{self_improvement.publication_year}}
-                    </span>
-                </li>
-                <div id="tabel" class="overflow-x-auto relative m-20">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Judul</th>
-                                <th>Penulis</th>
-                                <th>Penerbit</th>
-                                <th>Tahun Terbit</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            <tr>
-                                <td>{{self_improvement.id}}</td>
-                                <td>{{self_improvement.title}}</td>
-                                <td>{{self_improvement.author}}</td>
-                                <td>{{self_improvement.publisher}}</td>
-                                <td>{{self_improvement.publication_year}}</td>
-                                <td><a href="#" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Edit</a></td>
-                                <td><a href="#" class="focus:outline-none text-white bg-yellow-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Hapus</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </ul>
-        </div>
         
-      </div>
-      
-      </div>
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-10">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">Id</th>
+                            <th scope="col" class="py-3 px-6">Judul</th>
+                            <th scope="col" class="py-3 px-6">Penulis</th>
+                            <th scope="col" class="py-3 px-6">Penerbit</th>
+                            <th scope="col" class="py-3 px-6">Tahun Terbit</th>
+                            <th scope="col" class="py-3 px-6">Aksi 1</th>
+                            <th scope="col" class="py-3 px-6">Aksi 2</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr 
+                        v-for="(self_improvement, index) in self_improvement.list" :key="index"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{self_improvement.id}}</td>
+                            <td class="py-6 px-6">{{self_improvement.title}}</td>
+                            <td class="py-4 px-6">{{self_improvement.author}}</td>
+                            <td class="py-4 px-6">{{self_improvement.publisher}}</td>
+                            <td class="py-4 px-6">{{self_improvement.publication_year}}</td>
+                            <td><a href="#" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Edit</a></td>
+                            <td><a href="#" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2. dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Hapus</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
       <script src="./index.js"></script>
 </body>
 </html>
