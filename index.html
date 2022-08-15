@@ -26,35 +26,35 @@
             <input 
             v-model="self_improvement.title"
             type="text"
-            id="input_title" class="mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+            id="input_title" class="mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Judul Buku" />
             
             <label class="text-white">Penulis</label>
             <input 
             v-model="self_improvement.author"
             type="text"
-            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Nama Penulis Buku" />
             
             <label class="text-white">Penerbit</label>
             <input 
             v-model="self_improvement.publisher"
             type="text"
-            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Perusahaan Penerbit Buku" />
             
             <label class="text-white">Tahun Terbit</label>
             <input 
             v-model="self_improvement.publication_year"
             type="text"
-            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-black dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+            id="input_author" class=" mt-2 mb-2 block px-4 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-black-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
             placeholder="Masukan Tahun Terbit Buku" />
     
             <button
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             type="submit"
             >
-            {{ self_improvement.isUpdate ? 'Submit' : 'Create' }}
+            {{ self_improvement.isUpdate ? 'Update' : 'Create' }}
             </button>
         
             <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-10">
@@ -80,8 +80,8 @@
                             <td class="py-4 px-6">{{self_improvement.author}}</td>
                             <td class="py-4 px-6">{{self_improvement.publisher}}</td>
                             <td class="py-4 px-6">{{self_improvement.publication_year}}</td>
-                            <td><a href="#" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Edit</a></td>
-                            <td><a href="#" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2. dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Hapus</a></td>
+                            <td><a href="#" class="focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800" @click = "updateSelf_improvement()">Edit</a></td>
+                            <td><a href="#" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2. dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"  @click = "deleteSelf_improvement()">Hapus</a></td>
                         </tr>
                     </tbody>
                 </table>
